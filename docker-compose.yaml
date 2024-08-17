@@ -1,0 +1,6 @@
+services:
+  img: 
+    build: .
+    container_name: basic-app
+    ports:
+      - "3000:3000"

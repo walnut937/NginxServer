@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Details</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Submit Your Details</h1>
+    <form id="detailsForm" action="/submit" method="POST" onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message"></textarea><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            let valid = true;
+
+            // Clear previous error messages
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(el => el.remove());
+
+            // Name validation
+            if (name === '') {
+                showError('name', 'Name is required.');
+                valid = false;
+            }
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '') {
+                showError('email', 'Email is required.');
+                valid = false;
+            } else if (!emailPattern.test(email)) {
+                showError('email', 'Please enter a valid email address.');
+                valid = false;
+            }
+
+            // Message validation
+            if (message === '') {
+                showError('message', 'Message is required.');
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error';
+            errorElement.style.color = 'red';
+            errorElement.textContent = message;
+            field.insertAdjacentElement('afterend', errorElement);
+        }
+    </script>
+</body>
+</html>
