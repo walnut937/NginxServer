@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1>Submit Your Details</h1>
+    <h1>Submit Your Details  <%= processId %></h1>
     <form id="detailsForm" action="/submit" method="POST" onsubmit="return validateForm()">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br><br>
