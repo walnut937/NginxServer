@@ -30,7 +30,7 @@ if(cluster.isPrimary){
     // Route to serve the HTML form
     app.get('/', (req, res) => {
         // res.json({ message: `resolve by ${process.pid}`})
-        res.render('form', {processId: process.pid});
+        res.render('home', {processId: process.pid});
     }); 
 
     // Route to handle form submissions

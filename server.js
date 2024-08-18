@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route to serve the HTML form
 app.get('/', (req, res) => {
-  res.render('form');
+  res.render('home');
 });
 
 // Route to handle form submissions
